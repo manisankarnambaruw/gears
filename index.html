@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gears</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .gear-container {
+        position: relative;
+        width: 200px;
+        height: 120px;
+      }
+
+      .gear {
+        position: absolute;
+        border-radius: 50%;
+        background-color: orange;
+      }
+
+      .gear::before {
+        content: "";
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        z-index: 2;
+      }
+
+      .gear:first-child::before {
+        width: 20px;
+        height: 20px;
+      }
+
+      .gear:nth-child(2)::before {
+        width: 15px;
+        height: 15px;
+      }
+
+      .gear:first-child {
+        width: 100px;
+        height: 100px;
+        top: 10px;
+        left: 10px;
+      }
+
+      .gear:nth-child(2) {
+        width: 60px;
+        height: 60px;
+        top: 66px;
+        right: 26px;
+      }
+
+      .teeth {
+        position: absolute;
+        background-color: orange;
+        border-radius: 2px;
+      }
+
+      .gear::before,
+      .gear .teeth {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .gear:first-child .teeth {
+        width: 120px;
+        height: 25px;
+        z-index: 1;
+      }
+
+      .gear:nth-child(2) .teeth {
+        width: 72px;
+        height: 10px;
+        z-index: 1;
+      }
+
+      /* gear 1 */
+      .gear:first-child .teeth:nth-child(2) {
+        transform: translate(-50%, -50%) rotateZ(45deg);
+      }
+
+      .gear:first-child .teeth:nth-child(3) {
+        transform: translate(-50%, -50%) rotateZ(90deg);
+      }
+
+      .gear:first-child .teeth:nth-child(4) {
+        transform: translate(-50%, -50%) rotateZ(135deg);
+      }
+
+      /* gear 2 */
+      .gear:nth-child(2) .teeth:nth-child(1) {
+        transform: translate(-50%, -50%) rotateZ(25deg);
+      }
+
+      .gear:nth-child(2) .teeth:nth-child(2) {
+        transform: translate(-50%, -50%) rotateZ(70deg);
+      }
+
+      .gear:nth-child(2) .teeth:nth-child(3) {
+        transform: translate(-50%, -50%) rotateZ(115deg);
+      }
+
+      .gear:nth-child(2) .teeth:nth-child(4) {
+        transform: translate(-50%, -50%) rotateZ(160deg);
+      }
+
+      .gear:first-child {
+        animation: clockwise 4s linear infinite;
+      }
+
+      .gear:nth-child(2) {
+        animation: anticlockwise 4s linear infinite;
+      }
+
+      @keyframes clockwise {
+        0% {
+          transform: rotateZ(0deg);
+        }
+        100% {
+          transform: rotateZ(360deg);
+        }
+      }
+
+      @keyframes anticlockwise {
+        0% {
+          transform: rotateZ(0deg);
+        }
+        100% {
+          transform: rotateZ(-360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container">
+        <div class="gear-container">
+          <div class="gear">
+            <div class="teeth"></div>
+            <div class="teeth"></div>
+            <div class="teeth"></div>
+            <div class="teeth"></div>
+          </div>
+          <div class="gear">
+            <div class="teeth"></div>
+            <div class="teeth"></div>
+            <div class="teeth"></div>
+            <div class="teeth"></div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
