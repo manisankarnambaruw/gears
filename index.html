@@ -16,6 +16,16 @@
         width: 200px;
         height: 120px;
       }
+      
+      input.gear-touch {
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+        height: 120px;
+        transform: translateY(-50%);
+        width: 200px;
+        opacity: 0;
+      }
 
       .gear {
         position: absolute;
@@ -133,11 +143,17 @@
           transform: rotateZ(-360deg);
         }
       }
+      
+      input.gear-touch:checked ~ .gear-container .gear,
+      input.gear-touch:checked ~ .gear-container .gear .teeth {
+        background-color: silver;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="container">
+        <input type="checkbox" class="gear-touch" />
         <div class="gear-container">
           <div class="gear">
             <div class="teeth"></div>
